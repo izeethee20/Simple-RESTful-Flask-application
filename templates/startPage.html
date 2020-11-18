@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+        <title>Flask app</title>
+        <style>
+            .block{
+                position: absolute;
+                white-space: pre;
+                width: 243px;
+                background: #ccc;
+                padding: 0px 3px 1px 51px;
+                border: solid 1px black;
+                float: left;
+                text-align: left;
+            }
+            tr{
+                display: block;
+                width: 24em;
+                padding:10px;
+                background-color: #f4f4f4;
+                border-top: 1px dashed #333;
+                border-right: 1px dashed #333;
+                border-left: 5px solid #333;
+                text-decoration: none;
+                color: darkcyan;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="block">
+              Gradation:
+  1st            2nd             3rd
+gender{}
+name{      title{}
+                first{}
+                last{}}{}
+location{ street{         number{}
+                                    name{}}
+                city{}
+                state{}
+                country{}
+                postcode{}
+                coordinates{latitude
+                                    longitude{}}
+                timezone{    offset{}
+                                    description{}}}
+email{}
+login{      uuid{}
+                username{}
+                password{}
+                salt{}
+                md5{}
+                sha256{}}
+dob{        date{}
+                age{}}
+registered{date{}
+                age{}}
+phone{}
+cell{}
+id{           name{}
+                value}
+picture{   large{}
+                medium{}
+                thumbnail{}}
+nat{}
+    </div>
+    <h3><a href = "/view_all">1) Click here to view all data</a></h3>
+    <br>
+    <h3>2) You can select an entity below</h3>
+    Enter value of each gradation<br>
+      (at least the first field)<br>
+                ||<br>
+                \/
+    <br>
+    <form action = "{{ url_for('choose') }}" method = "POST">
+             1st<br>
+             <input type = "text" name = "st" /></br>
+
+             2nd<br>
+             <input type = "text" name = "nd" /><br>
+
+             3rd<br>
+             <input type = "text" name = "rd" /><br>
+             <input type = "submit" value = "show" /><br>
+        </form>
+    <br>
+    <h3>3)  You can select an entity to delete below</h3>
+    Enter value of each gradation<br>
+      (at least the first field)<br>
+                ||<br>
+                \/
+    <form action = "{{ url_for('delete_one') }}" method = "POST">
+             1st<br>
+             <input type = "text" name = "st" /></br>
+
+             2nd<br>
+             <input type = "text" name = "nd" /><br>
+
+             3rd<br>
+             <input type = "text" name = "rd" /><br>
+             <input type = "submit" value = "show" /><br>
+        </form>
+    <br>
+
+    </body>
+</html>
