@@ -3,31 +3,43 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
         <title>Flask app</title>
         <style>
             .block{
                 position: absolute;
                 white-space: pre;
                 width: 243px;
-                background: #ccc;
+                background: #f4f4f4;
                 padding: 0px 3px 1px 51px;
                 border: solid 1px black;
                 float: left;
                 text-align: left;
+                color: darkcyan;
             }
-            tr{
-                display: block;
+            .block1{
+                position: relative;
+                white-space: pre;
+                width: 263px;
+                background: #f4f4f4;
+                padding: 0px 3px 1px 36px;
+                border: solid 1px black;
+                float: right;
+                text-align: left;
+                color: darkcyan;
+            }
+
+            .center {
                 width: 24em;
                 padding:10px;
                 background-color: #f4f4f4;
                 border-top: 1px dashed #333;
                 border-right: 1px dashed #333;
-                border-left: 5px solid #333;
+                border-left: 1px dashed #333;
                 text-decoration: none;
                 color: darkcyan;
+                text-align: center;
+                margin: auto; /* Выравниваем по центру */
             }
-
         </style>
     </head>
     <body>
@@ -44,7 +56,7 @@ location{ street{         number{}
                 state{}
                 country{}
                 postcode{}
-                coordinates{latitude
+                coordinates{latitude{}
                                     longitude{}}
                 timezone{    offset{}
                                     description{}}}
@@ -68,43 +80,82 @@ picture{   large{}
                 thumbnail{}}
 nat{}
     </div>
-    <h3><a href = "/view_all">1) Click here to view all data</a></h3>
-    <br>
-    <h3>2) You can select an entity below</h3>
-    Enter value of each gradation<br>
-      (at least the first field)<br>
-                ||<br>
-                \/
-    <br>
-    <form action = "{{ url_for('choose') }}" method = "POST">
-             1st<br>
-             <input type = "text" name = "st" /></br>
+    <div class="block1">
+             ------------------------
+             1) Just click to view
+             ------------------------
 
-             2nd<br>
-             <input type = "text" name = "nd" /><br>
 
-             3rd<br>
-             <input type = "text" name = "rd" /><br>
-             <input type = "submit" value = "show" /><br>
-        </form>
-    <br>
-    <h3>3)  You can select an entity to delete below</h3>
-    Enter value of each gradation<br>
-      (at least the first field)<br>
-                ||<br>
-                \/
-    <form action = "{{ url_for('delete_one') }}" method = "POST">
-             1st<br>
-             <input type = "text" name = "st" /></br>
+            --------------------------
+            2) For instance,
+            if you want to select
+            the entity username{},
+            then you need to write
+            'login' in the first field
+            and 'username'
+            in the second field
+            and click show.
+            ---------------------------
 
-             2nd<br>
-             <input type = "text" name = "nd" /><br>
 
-             3rd<br>
-             <input type = "text" name = "rd" /><br>
-             <input type = "submit" value = "show" /><br>
-        </form>
-    <br>
 
+
+ -----------------------------------------
+ 3) To delete an entity,
+ you need to repeat the steps
+ from the selection
+ of the entity
+ and also add the name
+ of the entity in the fourth field,
+ for example 'name',
+ and what gradation this entity is,
+ in this case '3'
+ Sample:
+ 1st=location, 2nd=street, 3rd=name
+ Name of entity=name, Gradation=3
+ -------------------------------------------
+
+
+    </div>
+    <div class="center">
+        <h3><a href = "/view_all">1) Click here to view all data</a></h3>
+        <h3>2) You can select an entity below</h3>
+        Enter value of each gradation<br>
+          (at least the first field)<br><br>
+        <form action = "{{ url_for('choose') }}" method = "POST">
+                 1st<br>
+                 <input type = "text" name = "st" /></br>
+
+                 2nd<br>
+                 <input type = "text" name = "nd" /><br>
+
+                 3rd<br>
+                 <input type = "text" name = "rd" /><br>
+
+                 <input type = "submit" value = "show" /><br>
+            </form>
+        <h3>3)  You can select an entity to delete below</h3>
+        You need to enter value of each gradation
+        and to enter "name" of entity which you want to delete<br>
+          (at least the first, fourth and fifth field)<br>
+        <form action = "{{ url_for('delete_one') }}" method = "POST">
+                 1st<br>
+                 <input type = "text" name = "st" /></br>
+
+                 2nd<br>
+                 <input type = "text" name = "nd" /><br>
+
+                 3rd<br>
+                 <input type = "text" name = "rd" /><br>
+                 Name of entity which you want to delete<br>
+                 <input type = "text" name = "noe" /><br>
+                 Gradation<br>                      <input type = "text" name = "n" /><br>
+                 (in field 'Gradation' you needed to enter 1, 2 or 3)<br>
+
+
+
+                 <input type = "submit" value = "show" /><br>
+            </form>
+    </div>
     </body>
 </html>

@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+    <link rel="stylesheet" href="/static/s.css">
     <title>View all</title>
 </head>
     <body>
     <h2><a href = "\">Go back to start page</a></h2>
         <table>
-            {% for item in items %}
-            {% for j in i %}
+            {% for i in j %}
             <tr>
-                <td>USER NUMBER {{i[j]+1}}</td>
-                <td>{{items[j]}}</td>
+                <td>USER NUMBER {{j[i]+1}}</td>
+                <td>{{items[i]}}</td>
                 <td> </td>
             </tr>
-            {% endfor %}
             {% endfor %}
         </table>
     </body>
